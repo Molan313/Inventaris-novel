@@ -1,4 +1,5 @@
 //memasukkan fungsi scanner
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class jualBuku {
     
@@ -15,21 +16,23 @@ public class jualBuku {
                 maks = in.nextInt();
 
                 if(maks < 0){
-                    System.err.println("Tidak menerima angka negatif");
+                    System.out.println("Tidak menerima angka negatif");
                 };
             }
-            catch(Exception e){
+            // mengambil error dan memberikan memberikan pesan kesalahan
+            catch(InputMismatchException e){
                 System.err.println("Tipe data yang dimasukkan salah. Input kembali.");
                 in.next();
             }
         }
+        // terus menjalankan program sampai input adalah nol atau lebih
         while(maks < 0);
         // apabila angka yang diinputkan adalah nol
         if(maks == 0){
-            System.out.println("Tidak ada buku yang ditambahkan. ");
+            System.out.println("Tidak ada buku yang ditambahkan.");
         }
         // membuat array yang menyimpan data, yang ukurannya sebanyak maks
-        buku[] buku = new buku[maks];
+        buku[] banyakbuku = new buku[maks];
         // input data produk sampai jumlah maks
         for (int i = 0; i < maks; i++){
             in.nextLine(); //membersihkan buffer
@@ -48,13 +51,13 @@ public class jualBuku {
             System.out.println("Status buku ke " + (i+1) + "(true/false): ");
             boolean status = in.nextBoolean();
             // data baru masuk
-            buku[i] = new buku(nomor, nama, jumlah, harga, status);
+            banyakbuku[i] = new buku(nomor, nama, jumlah, harga, status);
         } 
         // menutup fungsi scanner
         in.close();
         // menampilkan informasi buku
         System.out.println("Informasi buku: ");
-        for(buku b : buku){
+        for(buku b : banyakbuku){
             System.out.println(b + "\n");
         }
 
