@@ -11,8 +11,8 @@ public class buku{
 
     // metode pemanggilan kelas
     buku(){
-
     }
+
     // masukan
     buku (String nomor, String nama, int jumlah, float harga, boolean status){
         this.nomorBuku = nomor;
@@ -22,6 +22,7 @@ public class buku{
         this.statusBuku = status;
 
     }
+
 
     public String getNomorBuku(){
         return nomorBuku;
@@ -66,7 +67,33 @@ public class buku{
     public void setStatusBuku(boolean status){
         this.statusBuku = status;
     }
+
+    public void menambahBuku(int quantity){
+        if(quantity > 0){
+            jumlahBuku += quantity;
+            System.out.println(quantity + " buku telah ditambahkan ke dalam stok\nJumlah stok " + jumlahBuku);
+        }
+        else{
+            System.err.println("Jumlah buku harus lebih dari 0");
+        }
+    }
+
+    public void mengurangiBuku(int quantity){
+        if(quantity > 0){
+            if(quantity <= jumlahBuku){
+                jumlahBuku -= quantity;
+                System.out.println(quantity + " buku telah dikurangi dari stok\nJumlah stok " + jumlahBuku);
+            }
+            else{
+                System.err.println("Jumlah buku lebih sedikit daripada jumlah yang akan dikurangi, jumlah stok " + jumlahBuku);
+            }
+        }
+        else{
+            System.err.println("Jumlah buku harus lebih dari 0");
+        }
+    }
     // mengubah data ke dalam bentuk string
+    @Override
     public String toString(){
         // menginisialisasikan string kosong
         String buku = "";
